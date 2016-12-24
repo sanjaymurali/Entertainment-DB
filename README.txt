@@ -1,8 +1,6 @@
 Entertainment-DB is part of a project submission by Sanjay Murali and Srijit Ravishankar
 for CS5200 Introduction to Database Management.
 
-A live version of the APP is available here for viewing: http://159.203.123.21:3000/
-
 Running the project:
 
 1. NodeJS v4.5.x
