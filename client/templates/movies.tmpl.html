@@ -1,0 +1,22 @@
+<div id="movies_page">
+
+    <div class="movie_display" dir-paginate="x in movies | itemsPerPage: 5">
+        <div class="row">
+            <div class="col-md-2">
+                <a ui-sref="movie({ id: x.id})"><img class="movie_image" ng-src="{{x.imgurl}}" alt="{{x.title}}"
+                                                     title="{{x.title}}" width="180" height="300"></a>
+            </div>
+            <div class="col-md-10">
+                <a ui-sref="movie({ id: x.id})" class="movie_name">{{x.title}}</a>
+                <span class="movie_year">({{x.year}})</span>
+                <br/>
+                <span class="movie_rating">Rating: {{x.rating}}</span>
+
+                <br/>
+                <span class="movie_plot">{{x.plot}}</span>
+            </div>
+        </div>
+    </div>
+
+    <dir-pagination-controls></dir-pagination-controls>
+</div>

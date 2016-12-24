@@ -1,0 +1,25 @@
+<div id="view_news">
+    <span ng-show="errorCode">Sorry no news item to display.</span>
+
+
+    <span ng-hide="errorCode">
+        <div class="news_display" dir-paginate="x in news.items | itemsPerPage: 5">
+        <div class="row">
+            <div class="col-md-3">
+                <img class="news_image" ng-src="{{x.image}}" alt="{{x.title}}" title="{{x.title}}" width="240"
+                     height="380">
+            </div>
+            <div class="col-md-5">
+                <a href="{{x.url}}" target="_blank" class="news_title">{{x.title}}</a>
+                <br/>
+                <span class="news_description">({{x.description}})</span>
+
+
+            </div>
+        </div>
+            </div>
+        <dir-pagination-controls></dir-pagination-controls>
+    </span>
+
+
+</div>

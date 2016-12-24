@@ -1,0 +1,18 @@
+<div id="view_trivia">
+    <span ng-show="errorCodeTrivia">Sorry no trivias to display.</span>
+
+
+    <div class="trivia_display" dir-paginate="x in trivia.items | itemsPerPage: 1">
+        <span class="trivia_question">Question: {{x.question}}</span><br/><br/>
+        <button type="submit" class="btn btn-primary btn-xs show_answer" ng-click="showAnswerForQ()">Show Answer
+        </button>
+        <br/><br/>
+        <span class="trivia_answer" ng-show="showAnswer">{{x.answer}}</span>
+
+    </div>
+    <br/>
+    <div class="pagination_center">
+        <dir-pagination-controls on-page-change="answerToggle(showAnswer)"></dir-pagination-controls>
+    </div>
+
+</div>

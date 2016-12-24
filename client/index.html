@@ -1,0 +1,174 @@
+<!DOCTYPE html >
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Entertainment DB</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="js/vendor/angular.js"></script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/dirPagination.js"></script>
+    <script src="js/vendor/angular-ui-router.js"></script>
+    <script src="js/main.js"></script>
+
+    <base href="/">
+</head>
+
+<body ng-app="edb" ng-controller="mainController">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="index">Entertainment DB</a>
+        </div>
+
+        <div id="main-navbar" class="collapse navbar-collapse">
+            <!-- Navbar items, links to various pages -->
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active"><a ui-sref="index">Home</a></li>
+                <li class="dropdown closed">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Movie
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ui-sref-active="active"><a ui-sref="favorites">Favorites</a></li>
+                        <li ui-sref-active="active"><a ui-sref="movies">Movies</a></li>
+                        <li ui-sref-active="active"><a ui-sref="nearby">Theatres Nearby</a></li>
+                        <li ui-sref-active="active"><a ui-sref="classify_genres">Classify Movies</a></li>
+                        <li ui-sref-active="active"><a ui-sref="biography">Actor Bio</a></li>
+                        <li ui-sref-active="active" ng-show="isValidSession"><a ui-sref="suggestions">Movie
+                            Suggestions</a></li>
+                    </ul>
+                </li>
+                <li ui-sref-active="active"><a ui-sref="search">Search</a></li>
+                <li class="dropdown closed">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">News &
+                        Trivia <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ui-sref-active="active"><a ui-sref="news">News</a></li>
+                        <li ui-sref-active="active"><a ui-sref="trivia">Trivia</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown closed" ng-show="isModerator">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Admin
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ui-sref-active="active"><a ui-sref="adminNews">Add News</a></li>
+                        <li ui-sref-active="active"><a ui-sref="adminMovie">Add Movie</a></li>
+                        <li ui-sref-active="active"><a ui-sref="adminTrivia">Add Trivia</a></li>
+                        <li ui-sref-active="active"><a ui-sref="updateMovies">Update Movies</a></li>
+                        <li ui-sref-active="active"><a ui-sref="approveComment">Approve Comment</a></li>
+                        <li ui-sref-active="active"><a ui-sref="addActor">Add Actors</a></li>
+                        <li ui-sref-active="active" ng-show="isAdmin"><a ui-sref="makeMod">Add Moderator</a></li>
+
+
+                        <!-- add more here! -->
+                    </ul>
+                </li>
+
+                <li ui-sref-active="active" ng-hide="isValidSession"><a ui-sref="register">Register</a></li>
+            </ul>
+            <!-- Show/Hide login form based on isValidSession -->
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-show="isValidSession" class="dropdown">
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Hello {{userDetails.first_name}}
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="logout()">Logout</a></li>
+                    </ul>
+                </li>
+                <li ng-hide="isValidSession">
+                    <form id="login-form" class="navbar-form navbar-right" ng-controller="loginController"
+                          ng-submit="loginSubmission()" role="form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Email" id="email" name="email" class="form-control"
+                                   ng-model="loginForm.email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" id="password" name="password"
+                                   class="form-control" ng-model="loginForm.password">
+                        </div>
+                        <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#login_error">
+                            Sign in
+                        </button>
+
+                        <div ng-show="loginError" class="modal fade" id="login_error" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Login Error</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your Username/Password is incorrect</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ng-show="loginError" class="modal fade" id="login_error" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login Error</h4>
+            </div>
+            <div class="modal-body">
+                <p>Your Username/Password is incorrect</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <div ui-view></div>
+</div>
+
+<footer id="site_footer">
+    <span id="edb_footer">&copy; EDB 2016</span>
+    <a ui-sref="citation" id="citation">Citation</a>
+</footer>
+
+
+</body>
+</html>

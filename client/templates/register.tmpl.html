@@ -1,0 +1,41 @@
+<div id="registration_page">
+    <div class="alert alert-danger" ng-show="isValidSession">
+        <strong>Error!</strong> You may not register more than once!
+    </div>
+
+    <div class="registration-container" ng-hide="isValidSession" id="register-form">
+        <div class="alert alert-danger" ng-show="errorCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> Seems the Email Address already exists!
+        </div>
+        <div class="alert alert-success" ng-show="successCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Congrats! You have successfully registered!
+        </div>
+        <form ng-submit="registrationSubmission()" role="form">
+            <div class="form-group">
+                First Name:
+                <input type="text" placeholder="First Name" id="fname" name="fname" class="form-control"
+                       ng-model="registerForm.fname" required>
+            </div>
+            <div class="form-group">
+                Last Name:
+                <input type="text" placeholder="Last Name" id="lname" name="lname" ng-model="registerForm.lname"
+                       class="form-control" required>
+            </div>
+            <div class="form-group">
+                Email Address:
+                <input type="text" placeholder="Email" id="email" name="email" ng-model="registerForm.email"
+                       class="form-control" required>
+            </div>
+            <div class="form-group">
+                Password:
+                <input type="password" placeholder="Password" id="password" name="password"
+                       ng-model="registerForm.password" class="form-control" required>
+            </div>
+            <button id="registerButton" type="submit" class="btn btn-success">Register</button>
+            &nbsp;
+            <a ui-sref="login"> Already a User?</a>
+        </form>
+    </div>
+</div>

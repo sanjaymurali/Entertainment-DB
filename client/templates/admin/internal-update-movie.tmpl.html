@@ -1,0 +1,69 @@
+<div id="update_movie">
+    <div class="alert alert-danger" ng-hide="(isModerator || isAdmin) && (isValidSession)">
+        <strong>Error!</strong> Not Allowed to access this page!
+    </div>
+    <span ng-show="(isModerator || isAdmin) && (isValidSession)">
+        <div class="alert alert-danger" ng-show="noneToShow">
+        <strong>Error!</strong> No movies to show!
+    </div>
+        <span class="" ng-show="!noneToShow">
+    Update Movie:
+    <br/>
+    <br/>
+    <div class="movie-update-container" id="register-form">
+        <div class="alert alert-danger" ng-show="errorCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> Couldnt Update!
+        </div>
+        <div class="alert alert-success" ng-show="successCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Congrats! You have successfully updated!
+        </div>
+        <form ng-submit="updateMovie()" role="form">
+            <div class="form-group">
+                Movie Name:
+                <input type="text" placeholder="Movie Name" class="form-control" ng-model="movie.title" required>
+            </div>
+            <div class="form-group">
+                Movie Plot:
+                <textarea placeholder="Movie Plot" ng-model="movie.plot" class="form-control" rows="5"
+                          required></textarea>
+            </div>
+            <div class="form-group">
+                Year:
+                <input type="text" placeholder="Year" ng-model="movie.year" class="form-control" required>
+            </div>
+            <div class="form-group">
+                Runtime:
+                <input type="text" placeholder="Runtime" ng-model="movie.runtime" class="form-control" required>
+            </div>
+            <div class="form-group">
+                Rating:
+                <input type="text" placeholder="Rating" ng-model="movie.rating" class="form-control" required>
+            </div>
+            <div class="form-group">
+                Director:
+                <input type="text" placeholder="Director" ng-model="movie.director" class="form-control" required>
+            </div>
+            <div class="form-group">
+                Actor:
+                <input type="text" placeholder="Actor" ng-model="movie.actor" class="form-control" required>
+            </div>
+            <div class="form-group">
+                Genre:
+                <input type="text" placeholder="Genre" ng-model="movie.genre" class="form-control" required>
+            </div>
+            <div class="form-group">
+                Language:
+                <input type="text" placeholder="Language" ng-model="movie.language" class="form-control" required>
+            </div>
+            <div class="form-group">
+                Image URL:
+                <input type="text" placeholder="Image URL" ng-model="movie.imgurl" class="form-control" required>
+            </div>
+            <button id="updateButton" type="submit" class="btn btn-success">Update!</button>
+        </form>
+    </div>
+    </span>
+    </span>
+</div>

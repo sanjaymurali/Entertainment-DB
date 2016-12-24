@@ -1,0 +1,36 @@
+<div id="search_page">
+    <h1 style="text-align: center">Search for a Movie</h1>
+    <form ng-submit="searchMovie()" role="form">
+        <div class="form-group">
+            <input type="text" placeholder="Title" id="title" name="title" class="form-control" ng-model="search.title"
+                   required>
+        </div>
+        <button id="searchButton" type="submit" class="btn btn-success">Search</button>
+    </form>
+    <br/>
+
+    Result(s) for {{search.title}} is : <br/ ><br/ >
+    <div class="alert alert-danger" ng-show="errorCode">
+        <strong>Error!</strong> No movies to show!
+    </div>
+    <div class="movie_display" ng-hide="errorCode" dir-paginate="x in movieNames | itemsPerPage: 5">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="movie_image" ng-src="{{x.imgurl}}" alt="{{x.title}}" title="{{x.title}}" width="180"
+                     height="300">
+            </div>
+            <div class="col-md-10">
+                <a ui-sref="movie({ id: x.id})" class="movie_name">{{x.title}}</a>
+                <span class="movie_year">({{x.year}})</span>
+                <br/>
+                <span class="movie_rating">Rating: {{x.rating}}</span>
+
+                <br/>
+                <span class="movie_plot">{{x.plot}}</span>
+            </div>
+        </div>
+    </div>
+
+    <dir-pagination-controls></dir-pagination-controls>
+
+</div>

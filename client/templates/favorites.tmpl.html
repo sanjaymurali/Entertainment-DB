@@ -1,0 +1,26 @@
+<div id="favorites_page">
+    <br/>
+    <span ng-hide="isValidSession">
+<div class="alert alert-info">
+<strong>FYI!</strong> You Need to <a ui-sref="login" class="alert-link">login</a>
+</div>
+</span>
+    <span ng-show="isValidSession">
+
+
+        <div id="favorites">
+
+            <span ng-show="(favlength == 0) || (nofavstoshow)">
+                To add favorites, Please visit <a ui-sref="movies">LINK</a>
+            </span>
+            <p ng-show="(favlength != 0) && !nofavstoshow">Your favorite Movies are:</p>
+            <ul ng-repeat="x in favInfo">
+            <li><a target="_blank" ui-sref="movie({ id: x.movieid})">{{x.title}}</a> <a
+                    class="glyphicon glyphicon-remove movie_fav_selected"
+                    ng-click="deleteAFav(x.movieid,$index)"></a></li>
+
+            </ul>
+        </div>
+
+        </span>
+</div>

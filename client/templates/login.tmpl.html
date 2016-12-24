@@ -1,0 +1,48 @@
+<div id="login_page">
+
+<span ng-show="isValidSession">
+<div class="alert alert-info">
+    Hi {{userDetails.first_name}} , Here are your favorite movies <a ui-sref="favorites" class="alert-link">Link</a>
+</div>
+
+</span>
+
+    <span ng-hide="isValidSession">
+        <span ng-controller="loginController">
+            <form id="login-form" ng-submit="loginSubmission()" role="form">
+                <div class="form-group">
+                <input type="text" placeholder="Email" id="email" name="email" class="form-control"
+                       ng-model="loginForm.email">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" id="password" name="password" class="form-control"
+                           ng-model="loginForm.password">
+                </div>
+                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#login_error_page">Sign in</button> &nbsp;
+                <span class="register_block">Not yet a User? <a ui-sref="register">Register</a></span>
+            </form>
+                                <div ng-show="loginError" class="modal fade" id="login_error_page" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Login Error</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your Username/Password is incorrect</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+            </span>
+
+</span>
+
+</div>

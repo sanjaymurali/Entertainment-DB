@@ -1,0 +1,95 @@
+<span class="" ng-if="noid">Please Click here: <a ui-sref="movies">Movies</a></span>
+<div ng-if="!noid" id="view_movie">
+
+    <!-- To add Facebook share -->
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img class="movie_image" ng-src="{{movie.imgurl}}" alt="{{movie.title}}" title="{{movie.title}}">
+        </div>
+        <div class="col-md-8">
+
+            <a ui-sref="movie({ id: movie.id})" class="movie_name"><h1>{{movie.title}}</h1></a>
+
+            <span ng-controller="favoriteController" ng-show="isValidSession">
+                <span class="desc" ng-if="!favAdded">Favorite this movie</span>
+                <span class="desc" ng-if="favAdded">Unfavorite this movie</span>
+
+                    <a class="glyphicon glyphicon-heart-empty not_added_fav" ng-if="!favAdded"
+                       ng-click="addToFav()"></a>
+                    <a class="glyphicon glyphicon-heart movie_fav_selected" ng-if="favAdded"
+                       ng-click="removeFromFav()"></a>
+                    <br/>
+</span>
+
+
+            <span class="movie_year"><span class="desc">Release Year:</span> {{movie.year}}</span>
+            <br/>
+            <span><span class="desc">Rating: </span>{{movie.rating}}</span><br/>
+            <span><span class="desc">Director: </span>{{movie.director}}</span><br/>
+            <span><span class="desc">Actors: </span>{{movie.actor}}</span>
+
+            <br/>
+            <span class="movie_plot"><span class="desc">Plot: </span> {{movie.plot}}</span>
+            <div class="comments_section" ng-controller="ratingController">
+                <h2>Comments</h2>
+                <span class="" ng-if="(ratingDetails.length == 0) || noneApproved ">No comments!</span>
+                <span ng-repeat="x in ratingDetails">
+
+                    <blockquote ng-show="(x.visibletoself) || (x.visibletoall)">
+                    <span class="user_name">{{x.first_name}}</span>
+                    <i>gave a rating of</i>
+                    <span class="user_rating">{{x.user_rating}}</span>
+                    <span class="comment_notice" ng-show="(x.visibletoself) && (!x.visibletoall)">Comment Not yet approved!</span>
+                    <br/>
+                    <span class="user_review">{{x.review}}
+                        <div class="fb-share-button"
+                             data-href=window.location.href
+                             data-layout="button_count">
+	</div>
+                    </span>
+                        </blockquote>
+                </span>
+
+                <br/>
+                <h2>Add Comment</h2>
+                <span ng-hide="isValidSession">Please <a ui-sref="login">Login</a> to add comments</span>
+                <div class="comment-container" ng-show="isValidSession">
+                    <div class="alert alert-danger" ng-show="errorCode">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Error!</strong> Sorry your comment couldnt be added!
+                    </div>
+                    <form ng-submit="addComment()" role="form">
+                        <div class="form-group">
+                            Rating (Out of 10)
+                            <input type="text" placeholder="Rating" id="rating" name="rating" class="form-control"
+                                   ng-model="comment.user_rating" required>
+                        </div>
+                        <div class="form-group">
+                            Review
+                            <input type="text" placeholder="Review" id="review" name="review" ng-model="comment.review"
+                                   class="form-control" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Add Comment</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

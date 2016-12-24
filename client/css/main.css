@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body, html {
+    height: 100%;
+}
+
+.container {
+    min-height: 100%;
+}
+
+.navbar {
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+.registration-container {
+    margin: 5% auto 0; /* Top right,left bottom */
+    max-width: 960px;
+}
+
+.login-container {
+    margin: 5% auto 0; /* Top right,left bottom */
+    max-width: 960px;
+}
+
+.no-register {
+    margin: 5% auto 0; /* Top right,left bottom */
+    max-width: 960px;
+}
+
+.movie_display {
+    padding-bottom: 20px;
+}
+
+.movie_rating {
+    color: red;
+}
+
+a.movie_name {
+    text-decoration: none;
+}
+
+.desc {
+    color: red;
+}
+
+#site_footer {
+    position: relative;
+    background: #2c3e50;
+    width: 100%;
+
+    padding: 15px 0;
+    margin-top: 20px;
+    bottom: 0;
+}
+
+#edb_footer {
+    padding: 0 10px;
+    color: white;
+}
+
+#citation {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    right: 50px;
+}
+
+.user_name {
+    color: purple;
+}
+
+.modal-dialog {
+    z-index: 2000;
+}
+
+.news_display {
+    padding-bottom: 20px;
+}
+
+.movie_fav_selected {
+    color: red;
+}
+
+a.movie_fav_selected, a.not_added_fav {
+    text-decoration: none;
+}
+
+a:hover.movie_fav_selected, a:hover.not_added_fav {
+    color: red;
+}
+
+.admin-table a {
+    cursor: pointer;
+}
+
+.comment_notice {
+    font-size: 12px;
+    color: red;
+}
+
+.trivia_display {
+    position: absolute;
+    width: 100%;
+    max-width: 960px;
+    background-color: #eee;
+
+}
+
+.trivia_question {
+    background-color: #efe;
+    position: relative;
+    margin: 20%
+}
+
+.show_answer {
+    position: relative;
+    margin-left: 35%;
+}
+
+.trivia_answer {
+    position: relative;
+    margin-left: 35%;
+}
+
+.pagination_center {
+
+    margin: 10% 0 0 30%;
+}
+
+
+
+
+
+
+
+
+
+
+

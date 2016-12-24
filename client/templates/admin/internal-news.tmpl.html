@@ -1,0 +1,21 @@
+<div id="add_news">
+    <div class="alert alert-danger" ng-hide="(isModerator || isAdmin) && (isValidSession)">
+        <strong>Error!</strong> Not Allowed to access this page!
+    </div>
+
+
+    <span ng-show="(isModerator || isAdmin) && (isValidSession)">
+        <p>Click on the Button Below to get the latest entertainment news!</p>
+    <a class="btn btn-default" ng-click="getNews()">Get Latest News!</a>
+    <br/>
+    <br/>
+    <div class="alert alert-danger" ng-show="errorCode">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> News wasnt added!
+    </div>
+    <div class="alert alert-success" ng-show="successCode">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Latest news items have been added!
+    </div>
+    </span>
+</div>

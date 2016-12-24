@@ -1,0 +1,32 @@
+<div id="add_trivia">
+    <div class="alert alert-danger" ng-hide="(isModerator || isAdmin) && (isValidSession)">
+        <strong>Error!</strong> Not Allowed to access this page!
+    </div>
+    <span ng-show="(isModerator || isAdmin) && (isValidSession)">
+        <h1 class="text-center">Add your Own trivia</h1>
+    <div class="registration-container" id="register-form">
+        <div class="alert alert-danger" ng-show="errorCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> Couldnt Add your Trivia to DB!
+        </div>
+        <div class="alert alert-success" ng-show="successCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Trivia has been added to DB!
+        </div>
+        <form ng-submit="addTrivia()" role="form">
+            <div class="form-group">
+                Question:
+                <input type="text" placeholder="Question" id="ques" name="ques" class="form-control"
+                       ng-model="trivia.question" required>
+            </div>
+            <div class="form-group">
+                Answer:
+                <input type="text" placeholder="Answer" id="ans" name="ans" class="form-control"
+                       ng-model="trivia.answer" required>
+            </div>
+
+            <button id="triviaButton" type="submit" class="btn btn-success">Add Trivia</button>
+        </form>
+    </div>
+    </span>
+</div>

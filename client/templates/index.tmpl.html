@@ -1,0 +1,13 @@
+<div id="index_page">
+    <div ng-hide="isValidSession">
+        <div class="jumbotron">
+            <h1>Hello!</h1>
+            <p>Please consider registering in our site.</p>
+            <p><a class="btn btn-primary btn-lg" ui-sref="register" role="button">Register &raquo;</a></p>
+        </div>
+        <hr>
+    </div>
+    <span ng-show="isValidSession">To view movies, Please visit <a ui-sref="movies">LINK</a></span>
+
+
+</div>

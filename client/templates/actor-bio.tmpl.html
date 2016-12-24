@@ -1,0 +1,18 @@
+<div id="actor_biography">
+    <div class="movie_display" dir-paginate="x in biography | itemsPerPage: 5">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="movie_image" ng-src="{{x.imgurl}}" alt="{{x.name}}" title="{{x.name}}" width="180"
+                     height="300">
+            </div>
+            <div class="col-md-10">
+                <span class="movie_name"><span class="desc">Name: </span>{{x.name}}</span><br/>
+                <span class="movie_year"><span class="desc">Bio: </span>{{x.bio}}</span>
+
+            </div>
+        </div>
+    </div>
+
+    <dir-pagination-controls></dir-pagination-controls>
+
+</div>

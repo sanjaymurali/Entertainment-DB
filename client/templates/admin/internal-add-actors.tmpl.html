@@ -1,0 +1,34 @@
+<div id="add_actors">
+    <div class="alert alert-danger" ng-hide="(isModerator || isAdmin) && (isValidSession)">
+        <strong>Error!</strong> Not Allowed to access this page!
+    </div>
+    <span ng-show="(isModerator || isAdmin) && (isValidSession)">
+    <span>Please Search for the exact Actor at <a target="_blank" href="http://www.imdb.com">IMDB</a></span><br/>
+    <div class="registration-container" id="register-form">
+        <div class="alert alert-danger" ng-show="errorCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> Couldnt Add your Actor to DB!
+        </div>
+        <div class="alert alert-success" ng-show="successCode">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Actor has been added to DB!
+        </div>
+        <form ng-submit="addActor()" role="form">
+            <div class="form-group">
+                Actor Name:
+                <input type="text" placeholder="Movie Name" class="form-control" ng-model="actorinfo.name" required>
+            </div>
+            <div class="form-group">
+                Actor Bio:
+                <textarea placeholder="Actor Bio" class="form-control" ng-model="actorinfo.bio" required></textarea>
+            </div>
+            <div class="form-group">
+                Actor Image (URL):
+                <input type="text" placeholder="Actor Image" class="form-control" ng-model="actorinfo.imgurl" required>
+            </div>
+
+            <button id="movieButton" type="submit" class="btn btn-success">Add Actor</button>
+        </form>
+    </div>
+        </span>
+</div>

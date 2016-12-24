@@ -1,0 +1,25 @@
+<div id="nearby_theatres">
+
+    <div ng-show="errorCode" class="alert alert-info">
+        <strong>Error</strong> Couldnt load nearby theatres
+    </div>
+
+    <table class="table table-striped table-hover admin-table">
+        <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>Address</th>
+            <th>Zipcode</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="x in theatres">
+            <td>{{x.name}}</td>
+            <td>{{x.address}}</td>
+            <td>{{x.pincode}}</td>
+        </tr>
+    </table>
+
+
+</div>

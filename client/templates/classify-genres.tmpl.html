@@ -1,0 +1,39 @@
+<div id="classify_based_on_genre">
+    <div class="alert alert-danger" ng-show="errorCode">
+        <strong>Oops!</strong> Something Went Wrong!
+    </div>
+    <div class="form-group">
+        <label for="select" class="col-lg-2 control-label">Genres Available:</label>
+
+        <select class="form-control" id="select" ng-model="genreselected" ng-change="getSpecificDetails(genreselected)">
+            <option ng-repeat="x in allgenres">{{x}}</option>
+        </select>
+    </div>
+
+    <span ng-show="movies.length == 1">Movie</span>
+    <span ng-show="movies.length > 1">Movies</span>
+    based on
+    {{genreselected}}
+    <span ng-show="movies.length == 1">is</span>
+    <span ng-show="movies.length > 1">are</span>: <br/><br/>
+    <div class="movie_display" dir-paginate="x in movies | itemsPerPage: 5">
+
+        <div class="row">
+            <div class="col-md-2">
+                <img class="movie_image" ng-src="{{x.imgurl}}" alt="{{x.title}}" title="{{x.title}}" width="180"
+                     height="300">
+            </div>
+            <div class="col-md-10">
+                <a ui-sref="movie({ id: x.id})" target="_blank" class="movie_name">{{x.title}}</a>
+                <span class="movie_year">({{x.year}})</span>
+                <br/>
+                <span class="movie_rating">Rating: {{x.rating}}</span>
+
+                <br/>
+                <span class="movie_plot">{{x.plot}}</span>
+            </div>
+        </div>
+    </div>
+
+    <dir-pagination-controls></dir-pagination-controls>
+</div>
