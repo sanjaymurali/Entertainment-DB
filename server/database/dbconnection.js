@@ -7,12 +7,12 @@
 var Sequelize = require('sequelize');
 
 // Change these to reflect your DB.
-var database_name = "entertainmentdb";
+var database_name = "edb";
 var username = "root";
-var password = "sanjay";
-var host_name = "localhost";
+var password = "root";
+var host_name = "mwgmw3rs78pvwk4e.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306";
 
-var sql = new Sequelize(database_name, username, password, {
+var sql = new Sequelize(process.env.JAWSDB_URL, {
     host: host_name,
     dialect: 'mysql',
     pool: {
