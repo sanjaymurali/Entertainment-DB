@@ -1,5 +1,4 @@
-Entertainment-DB is part of a project submission by Sanjay Murali and Srijit Ravishankar
-for CS5200 Introduction to Database Management.
+Entertainment-DB is part of a project submission for CS5200 Introduction to Database Management.
 
 Running the project:
 
