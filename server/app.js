@@ -10,7 +10,7 @@ var jwt = require('jsonwebtoken');
 var cors = require('cors');
 var sql = require('./database/dbconnection');
 
-var PORT = 3000; //Port to be used
+var PORT = process.env.PORT || 3000; //Port to be used
 
 var app = express(); // Initialize the app
 
