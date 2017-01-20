@@ -1,8 +1,8 @@
 // Change this URL, Note: Dont put trailing slash '/'
-URL = "http://entertainment.db";
+URL = "https://entertainment-db.herokuapp.com";
 
 /* App Code that contains the routes and controllers for the routes */
-var serverURL = URL + ":3000/api/";
+var serverURL = URL + "/api/";
 
 var edbApp = angular.module('edb', ['ui.router', 'angularUtils.directives.dirPagination']);
 
